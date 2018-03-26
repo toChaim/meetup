@@ -1,6 +1,7 @@
 {
   "name": "meetup_api",
   "scripts": {
+    "server": "server",
     "test": "mocha test/**/** --exit",
     "cover": "nyc mocha test/**/** --exit"
   },
@@ -8,7 +9,7 @@
   "description": "Seach for events on meetup.",
   "main": "index.js",
   "author": "Chaim Finkelman",
-  "license": "None",
+  "license": "UNLICENSED",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
