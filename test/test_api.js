@@ -1,10 +1,14 @@
-import { assert } from "chai"; 
+import { assert } from "chai";
+import api from '../index'
 
 describe('should run tests', ()=>{
-    it('should pass a test', ()=> {
-        assert.equal(1,1);
+    it('should have an NODE_ENV of test', ()=> {
+        assert.equal(process.env.NODE_ENV,"test");
     });
-    it('should fail a test', ()=> {
-        assert.equal(1,2);
+});
+
+describe('routes', ()=>{
+    it('api should be a object', ()=> {
+        assert.equal(typeof api,"object");
     });
 });
