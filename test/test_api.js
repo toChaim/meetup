@@ -1,5 +1,6 @@
-import { assert } from "chai";
-import api from '../index'
+import { assert, expect } from "chai";
+import request from "supertest";
+import api from '../server'
 
 describe('should run tests', ()=>{
     it('should have an NODE_ENV of test', ()=> {
@@ -9,6 +10,11 @@ describe('should run tests', ()=>{
 
 describe('routes', ()=>{
     it('api should be a object', ()=> {
-        assert.equal(typeof api,"object");
+        assert.equal(typeof api,"function");
+    });
+    it('responds to /', (done)=>{
+        request(api)
+            .get('/')
+            .expect(200, done);
     });
 });
