@@ -1,6 +1,6 @@
 import { assert, expect } from "chai";
 import request from "supertest";
-import api from '../server'
+import server from '../server'
 
 describe('should run tests', ()=>{
     it('should have an NODE_ENV of test', ()=> {
@@ -9,11 +9,11 @@ describe('should run tests', ()=>{
 });
 
 describe('routes', ()=>{
-    it('api should be a object', ()=> {
-        assert.equal(typeof api,"function");
+    it('server should be a function', ()=> {
+        assert.equal(typeof server,"function");
     });
     it('responds to /', (done)=>{
-        request(api)
+        request(server)
         .get('/')
         .expect('Content-Type', /json/)
         .expect(200)
@@ -24,7 +24,7 @@ describe('routes', ()=>{
         });
     });
     it('responds to /not_a_real_route', (done)=>{
-        request(api)
+        request(server)
         .get('/not_a_real_route')
         .expect('Content-Type', /json/)
         .expect(404)

@@ -4,22 +4,22 @@ import serverError from './error/server_error';
 
 const PORT = process.env.PORT || 3000;
 
-const api = express();
+const server = express();
 
 // temp root route
-api.get('/',(req,res,next)=>{
+server.get('/',(req,res,next)=>{
     return res.json({message: "This is a very dull page. What is on the next page?"});
 });
 
 // catch unfound routes
-api.use(notFoundErr);
+server.use(notFoundErr);
 
 // respond to errors
-api.use(serverError);
+server.use(serverError);
 
-api.listen(PORT, err => {
+server.listen(PORT, err => {
     if(err){ console.log(err); }
     else{ console.log(`API lisening on port ${PORT}`); }
 });
 
-export default api;
+export default server;
