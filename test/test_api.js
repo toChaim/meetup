@@ -16,7 +16,12 @@ describe('routes', ()=>{
         request(api)
         .get('/')
         .expect('Content-Type', /json/)
-        .expect(200, done);
+        .expect(200)
+        .end((err,res)=>{
+            if(err){ return done(err); }
+            assert(res.body.message,"This is a very dull page. What is on the next page?");
+            done();
+        });
     });
     it('responds to /not_a_real_route', (done)=>{
         request(api)
