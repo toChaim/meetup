@@ -1,5 +1,6 @@
 import express from 'express';
 import notFoundErr from './error/not_found';
+import serverError from './error/server_error';
 
 const PORT = process.env.PORT || 3000;
 
@@ -12,6 +13,9 @@ api.get('/',(req,res,next)=>{
 
 // catch unfound routes
 api.use(notFoundErr);
+
+// respond to errors
+api.use(serverError);
 
 api.listen(PORT, err => {
     if(err){ console.log(err); }
