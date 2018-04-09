@@ -14,7 +14,14 @@ describe('routes', ()=>{
     });
     it('responds to /', (done)=>{
         request(api)
-            .get('/')
-            .expect(200, done);
+        .get('/')
+        .expect('Content-Type', /json/)
+        .expect(200, done);
+    });
+    it('responds to /not_a_real_route', (done)=>{
+        request(api)
+        .get('/not_a_real_route')
+        .expect('Content-Type', /json/)
+        .expect(404, done);
     });
 });
