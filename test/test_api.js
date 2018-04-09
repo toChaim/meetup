@@ -22,6 +22,11 @@ describe('routes', ()=>{
         request(api)
         .get('/not_a_real_route')
         .expect('Content-Type', /json/)
-        .expect(404, done);
+        .expect(404)
+        .end((err,res)=>{
+            if(err){ return done(err); }
+            assert(res.body.message,"Not Found");
+            done();
+        });
     });
 });
